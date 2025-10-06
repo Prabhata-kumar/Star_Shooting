@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour
         screenBounds = new Bounds();
         screenBounds.Encapsulate(Camera.main.ScreenToWorldPoint(Vector3.zero));
         screenBounds.Encapsulate(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0f)));
+
+        StartCoroutine(Shoot());
     }
 
     private void OnEnable()
@@ -57,9 +60,7 @@ public class Player : MonoBehaviour
             turnDirection = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-            Shoot();
-        }
+
     }
 
     private void FixedUpdate()
@@ -94,10 +95,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    
+
+    private IEnumerator Shoot()
     {
-        Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        bullet.Shoot(transform.up);
+        while (true)
+        {
+            Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet.Shoot(transform.up);
+            yield return new WaitForSeconds(0.5f);
+        } 
     }
 
     private void TurnOffCollisions()
