@@ -39,13 +39,14 @@ public class Player : MonoBehaviour
         screenBounds.Encapsulate(Camera.main.ScreenToWorldPoint(Vector3.zero));
         screenBounds.Encapsulate(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0f)));
 
-        StartCoroutine(Shoot());
+        
     }
 
     private void OnEnable()
     {
         TurnOffCollisions();
         Invoke(nameof(TurnOnCollisions), respawnInvulnerability);
+        StartCoroutine(Shoot());
     }
 
     private void Update()

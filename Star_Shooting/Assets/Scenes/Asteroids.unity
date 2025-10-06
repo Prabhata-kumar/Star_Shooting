@@ -918,10 +918,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935cde9f66065794b9f0a139a8c05e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 526989106}
-  gameOverUI: {fileID: 1759306016}
-  scoreText: {fileID: 1159035112}
-  livesText: {fileID: 2013675850}
 --- !u!1 &1159035110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1759306017
 RectTransform:
   m_ObjectHideFlags: 0
